@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "author": "Fusion-Demo NTC v6",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard",
+      "id": "bb1",
+      "top": 408.2,
+      "left": -437.6,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "board-esp32-devkit-v1", "id": "esp", "top": 227.7, "left": -148.8, "attrs": {} },
+    { "type": "chip-mq2", "id": "mq2", "top": 116.22, "left": 177.6, "attrs": {} },
+    { "type": "chip-gps-neo6m", "id": "gps", "top": 202.62, "left": 340.8, "attrs": {} },
+    { "type": "chip-heart-rate-sensor", "id": "hr", "top": 413.82, "left": 198.61, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 252.2,
+      "left": -442.2,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRed",
+      "top": -214.8,
+      "left": 71,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rRed",
+      "top": -139.2,
+      "left": 95.4,
+      "rotate": 90,
+      "attrs": { "value": "1k" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": -214.8,
+      "left": -25,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rGreen",
+      "top": -130.4,
+      "left": -19.2,
+      "rotate": 90,
+      "attrs": { "value": "1k" }
+    },
+    { "type": "wokwi-lcd2004", "id": "lcd", "top": -176, "left": 284, "attrs": { "pins": "i2c" } }
+  ],
+  "connections": [
+    [ "esp:3V3", "bb1:25t.a", "red", [] ],
+    [ "esp:GND.1", "bb1:24t.a", "black", [] ],
+    [ "lcd:VCC", "bb1:tp.6", "red", [] ],
+    [ "lcd:GND", "bb1:tn.5", "black", [] ],
+    [ "lcd:SDA", "esp:D21", "purple", [] ],
+    [ "lcd:SCL", "esp:D22", "blue", [] ],
+    [ "mq2:VCC", "bb1:tp.15", "red", [] ],
+    [ "mq2:GND", "bb1:tn.19", "black", [] ],
+    [ "mq2:OUT0", "esp:D34", "orange", [] ],
+    [ "gps:VCC", "bb1:tp.20", "red", [] ],
+    [ "gps:GND", "bb1:tn.24", "black", [] ],
+    [ "gps:TX", "esp:RX2", "green", [] ],
+    [ "esp:TX2", "gps:RX", "green", [] ],
+    [ "hr:VCC", "bb1:tp.10", "red", [] ],
+    [ "hr:GND", "bb1:tn.11", "black", [] ],
+    [ "hr:S", "esp:D33", "blue", [] ],
+    [ "ntc1:VCC", "bb1:tp.4", "red", [] ],
+    [ "ntc1:GND", "bb1:tn.4", "black", [] ],
+    [ "ntc1:OUT", "esp:D35", "green", [] ],
+    [ "ledRed:A", "rRed:1", "red", [] ],
+    [ "rRed:2", "esp:D4", "red", [] ],
+    [ "ledRed:C", "bb1:tn.1", "black", [] ],
+    [ "ledGreen:A", "rGreen:1", "green", [] ],
+    [ "rGreen:2", "esp:D12", "green", [] ],
+    [ "ledGreen:C", "bb1:tn.2", "black", [] ],
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:EN", "bb1:5b.h", "", [ "$bb" ] ],
+    [ "esp:VN", "bb1:6b.h", "", [ "$bb" ] ],
+    [ "esp:VP", "bb1:7b.h", "", [ "$bb" ] ],
+    [ "esp:D34", "bb1:8b.h", "", [ "$bb" ] ],
+    [ "esp:D35", "bb1:9b.h", "", [ "$bb" ] ],
+    [ "esp:D32", "bb1:10b.h", "", [ "$bb" ] ],
+    [ "esp:D33", "bb1:11b.h", "", [ "$bb" ] ],
+    [ "esp:D25", "bb1:12b.h", "", [ "$bb" ] ],
+    [ "esp:D26", "bb1:13b.h", "", [ "$bb" ] ],
+    [ "esp:D27", "bb1:14b.h", "", [ "$bb" ] ],
+    [ "esp:D14", "bb1:15b.h", "", [ "$bb" ] ],
+    [ "esp:D12", "bb1:16b.h", "", [ "$bb" ] ],
+    [ "esp:D13", "bb1:17b.h", "", [ "$bb" ] ],
+    [ "esp:GND.2", "bb1:18b.h", "", [ "$bb" ] ],
+    [ "esp:VIN", "bb1:19b.h", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
