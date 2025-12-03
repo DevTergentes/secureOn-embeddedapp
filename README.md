@@ -5,7 +5,7 @@ This repository contains the embedded component of the **SecureOn** system, deve
 ## ▶️ Wokwi Simulation
 
 Access the project simulation directly through the following link:  
-🔗 [View simulation on Wokwi](https://wokwi.com/projects/445573195173928961)
+🔗 [View simulation on Wokwi](https://wokwi.com/projects/448564405153325057)
 
 ## 🛠 Technologies Used
 
